@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = np.loadtxt('C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Instrumentation/Photocell/Photocell_data.txt',delimiter=',')
+data = np.loadtxt('Photocell_data.txt',delimiter=',')
 
 time = data [:,0]
 time-=time[0]

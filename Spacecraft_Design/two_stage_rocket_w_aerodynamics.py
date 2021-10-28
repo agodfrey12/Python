@@ -47,7 +47,7 @@ class Aerodynamics():
         self.name = name
         if name == 'Kerbin':
             ###import the aero model for interpolation
-            data = np.loadtxt('kerbin_aerodynamics.txt')
+            data = np.loadtxt('kerbin_aerodynamics.txt') #file on Dr C github
             #print(data)
             self.altitude = data[:,0]
             #print(self.altitude)

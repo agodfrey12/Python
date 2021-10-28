@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 plt.close("all")
 
-data = np.loadtxt('C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Instrumentation/Potentiometer/Val vs Time.txt', delimiter=",")
+data = np.loadtxt('Val vs Time.txt', delimiter=",")
 
 t = data[:,0]
 val = data[:,1]

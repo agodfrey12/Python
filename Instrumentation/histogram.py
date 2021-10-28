@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import statistics as st
 
-data = np.loadtxt('C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Instrumentation/Histograms/Hist_data_dark.txt',delimiter=',')
+data = np.loadtxt('Hist_data_dark.txt',delimiter=',') #change to include the appropriate light level data
 
 t = data[:,0]
 s = data[:,1]

@@ -3,10 +3,10 @@ import matplotlib.pyplot as plt
 
 plt.close("all")
 
-accel = np.loadtxt('C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Instrumentation/CPB Modules/Acceleration.txt', delimiter=',')
-light = np.loadtxt('C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Instrumentation/CPB Modules/Light.txt', delimiter=',')
-sound = np.loadtxt('C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Instrumentation/CPB Modules/Sound.txt', delimiter=',')
-temp = np.loadtxt('C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Instrumentation/CPB Modules/Temperature.txt', delimiter=',')
+accel = np.loadtxt('Acceleration.txt', delimiter=',')
+light = np.loadtxt('Light.txt', delimiter=',')
+sound = np.loadtxt('Sound.txt', delimiter=',')
+temp = np.loadtxt('Temperature.txt', delimiter=',')
 
 t1 = accel[:,0]
 x = accel[:,1]

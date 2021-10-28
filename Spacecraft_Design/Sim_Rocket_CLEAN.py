@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = np.loadtxt("C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Spacecraft Design/Sim_Rocket_CLEAN.csv",delimiter=',')
+data = np.loadtxt("Sim_Rocket_CLEAN.csv",delimiter=',')
 
 time = data[:,0]
 altitude = data[:,1]

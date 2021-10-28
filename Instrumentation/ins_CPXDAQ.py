@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 
 plt.close("all")
 
-data = np.loadtxt('C:/Users/Aaron Godfrey/Desktop/School/Senior Year/Fall 2021/Instrumentation/CPX DAQ/CPXDAQ.txt')
+data = np.loadtxt('CPXDAQ.txt')
 
 t = data[:,0]
 buttonA = data[:,1]
