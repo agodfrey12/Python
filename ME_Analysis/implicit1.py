@@ -1,11 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Nov  3 10:26:20 2020
-Use FDM to solve for the 
-temperaure distribution along a bar 
-over time (transient solution)
-@author: JK
-"""
 import numpy as np
 import matplotlib.pyplot as plt
 L = 10 #length of rod
@@ -15,7 +7,7 @@ k = 0.835 #heat transfer coeff
 tf = 2 #final time
 tp = 0.1 #time interval
 h = tp #time step
-nt = np.int16(tf/h+1) #total number of ime seps
+nt = np.int16(tf/h+1) #total number of time seps
 lambd = k*h/dx**2
 tePr = np.zeros((nt,ns),float) #grid of points in time/space
 Te =np.zeros((ns,1),float) #The temp array at each time point
