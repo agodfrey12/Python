@@ -3,16 +3,18 @@ import matplotlib.pyplot as plt
 
 data = np.loadtxt('accel_data_to_vel.txt', delimiter = ',')
 #Grab raw data
-t = np.arange(0,11.99,0.01)
+dt = 0.01
 x = data[:,0]
 y = data[:,1]
 z = data[:,2]
+t = np.arange(0,len(x)*dt,dt)
 
 ##Clip Data
-xc = x[t]
-yc = y[t]
-zc = z[t]
-tc = t[t]
+tclip = 0.0
+xc = x[t>tclip]
+yc = y[t>tclip]
+zc = z[t>tclip]
+tc = t[t>tclip]
 
 ##Shift Data
 tc-=tc[0]
@@ -22,7 +24,7 @@ zc-=zc[0]
 
 ##Filter x-axis
 xcf = 0*xc
-s = 0.25
+s = 0.1
 for ctr in range(0,len(xc)-1):
     xcf[ctr+1] = (1-s)*xcf[ctr] + s*xc[ctr]
 

@@ -22,7 +22,7 @@ zc-=zc[0]
 
 ##Filter x-axis
 xcf = 0*xc
-s = 0.25
+s = 0.1
 for ctr in range(0,len(xc)-1):
     xcf[ctr+1] = (1-s)*xcf[ctr] + s*xc[ctr]
 
@@ -52,5 +52,16 @@ plt.plot(tc,velocity*2.23694)
 plt.grid()
 plt.xlabel('Time (sec)')
 plt.ylabel('Velocity (mph)')
+
+##integrate again
+position = 0*velocity
+for ctr in range(0,len(velocity)-1):
+    position[ctr+1] = position[ctr] + velocity[ctr]*deltat
+    
+plt.figure()
+plt.plot(tc,position*3.28)
+plt.xlabel('Time (sec)')
+plt.ylabel('Position (ft)')
+plt.grid()
 
 plt.show()
