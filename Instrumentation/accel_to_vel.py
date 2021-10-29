@@ -29,7 +29,7 @@ for ctr in range(0,len(xc)-1):
 plt.plot(tc,xc,label='X')
 plt.plot(tc,yc,label='Y')
 plt.plot(tc,zc,label='Z')
-plt.plot(tc,xcf,label='Z_Filtered')
+plt.plot(tc,xcf,label='X_Filtered')
 plt.grid()
 plt.legend()
 plt.xlabel('Time (sec)')
