@@ -1,18 +1,18 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = np.loadtxt('accel_data_to_vel1.txt', delimiter = ',')
+data = np.loadtxt('accel_data_to_vel.txt', delimiter = ',')
 #Grab raw data
-t = data[:,0]
-x = data[:,1]
-y = data[:,2]
-z = data[:,3]
+t = np.arange(0,11.99,0.01)
+x = data[:,0]
+y = data[:,1]
+z = data[:,2]
 
 ##Clip Data
-xc = x[t>0.1]
-yc = y[t>0.1]
-zc = z[t>0.1]
-tc = t[t>0.1]
+xc = x[t]
+yc = y[t]
+zc = z[t]
+tc = t[t]
 
 ##Shift Data
 tc-=tc[0]
