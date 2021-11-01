@@ -34,7 +34,7 @@ plt.grid()
 plt.legend()
 plt.xlabel('Time (sec)')
 plt.ylabel('Acceleration (m/s^2)')
-
+plt.title('Acceleration (m/s^2)')
 
 ##Get proper acceleration
 acceleration = -xcf
@@ -52,6 +52,7 @@ plt.plot(tc,velocity*2.23694)
 plt.grid()
 plt.xlabel('Time (sec)')
 plt.ylabel('Velocity (mph)')
+plt.title('Velocity (mph)')
 
 ##integrate again
 position = 0*velocity
@@ -60,6 +61,7 @@ for ctr in range(0,len(velocity)-1):
     
 plt.figure()
 plt.plot(tc,position*3.28)
+plt.title('Position (ft)')
 plt.xlabel('Time (sec)')
 plt.ylabel('Position (ft)')
 plt.grid()
