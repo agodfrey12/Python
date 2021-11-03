@@ -1,28 +1,41 @@
 ### DOINK code ###
 
+### notes for the future
+## make it write to a txt file on board
+## use switch to start with a delay after 3 secs
+## switch other way to stop
+## convert magentic #s to heading - some sort of equation for this
+## take a bias out of the readings
+
 # make sure file is named code.py
 
+import math
 import board
 import time
 import busio
-import adafruit_lis3mdl
-from adafruit_lsm6ds.lsm6ds33 import LSM6DS33
+import digitalio
+import adafruit_lis3mdl # magnetometer
+from adafruit_lsm6ds.lsm6ds33 import LSM6DS33 # accel and rate gyro
 
 #print(dir(adafruit_lis3mdl))
 #print(dir(LSM6DS33))
 
 start_time = time.monotonic()
 
-i2c = board.I2C()
-sensor1 = LSM6DS33(i2c)
-sensor2 = adafruit_lis3mdl.LIS3MDL(i2c)
+i2c = board.I2C()                           # tells the CPB we are using I2C
+sensor1 = LSM6DS33(i2c)                     # sens 1 is the accel/gyro on I2C
+sensor2 = adafruit_lis3mdl.LIS3MDL(i2c)     # sens 2 is the magnetometer on I2C
 
-accel = sensor1.acceleration
-gyro = sensor1.gyro
-mag_x, mag_y, mag_z = sensor2.magnetic
+buttonA = digitalio.DigitalInOut(board.D4)
+buttonA.direction = digitalio.Direction.INPUT
+buttonA.pull = digitalio.Pull.DOWN
 
-while time.monotonic() - start_time < 60:
-    print("Acceleration: X:%.2f, Y: %.2f, Z: %.2f m/s^2" % (accel))
-    print("Gyro X:%.2f, Y: %.2f, Z: %.2f radians/s" % (gyro))
-    print("X:{0:10.2f}, Y:{1:10.2f}, Z:{2:10.2f} uT".format(mag_x, mag_y, mag_z))
+while time.monotonic() - start_time < 40:
+    t = time.monotonic() - start_time
+    ax,ay,az = sensor1.acceleration         # acceleration data in 3 axis
+    wx,wy,wz = sensor1.gyro                 # rate gyro data in 3 axis
+    bx,by,bz = sensor2.magnetic             # magnetometer data in 3 axis
+    heading = math.atan2(by,bx)*180/math.pi
+    print(heading)
+    #print(t,ax,ay,az,wx,wy,wz,bx,by,bz)
     time.sleep(0.05)
