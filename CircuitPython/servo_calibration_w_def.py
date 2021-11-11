@@ -12,7 +12,7 @@ def servo_duty_cycle(pulse_ms, frequency=50):
     return duty_cycle
 
 def angle2pulse(angle):
-    return (0.603 + 0.0099 * angle)
+    return (0.6038491 + 0.00995322 * angle)
 
 # Main loop will run forever moving between 1.0 and 2.0 ms long pulses:
 while True:
