@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 
 plt.close()
 
-G = 6.67408e-11 #SI unites
+G = 6.67408e-11 #SI units
 Mkerbin = 5.29e22 #kg
 Rkerbin = 600000 #m
 Alt_ker = 80*1000 #m
