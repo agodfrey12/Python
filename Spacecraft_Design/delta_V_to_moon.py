@@ -46,10 +46,10 @@ v_moon = np.sqrt((mu_earth)/Dearth_moon)
 print('Velocity of the moon =', v_moon, 'm/s')
 
 v_cs_moon = np.sqrt((G*Mmoon)/(Rmoon+Alt_moon))
-print('moon parking orbit v =', v_cs_moon, 'm/s')
+print('Moon parking orbit v =', v_cs_moon, 'm/s')
 
-v_3 = v_moon - va #catch up with the moon - 
-print('Catch up with moon v =', v_3, 'm/s')
+#v_3 = v_moon - va #catch up with the moon - 
+#print('Catch up with moon v =', v_3, 'm/s')
 
 v_4 = v_cs_moon
 print('In moon parking orbit v =', v_4, 'm/s')
@@ -63,10 +63,10 @@ print('Takeoff from moon v =', v_6, 'm/s')
 v_7 = v_2 #return to earth
 print('Return to earth v =', v_7, 'm/s')
 
-deltaV = v_cs + v_2 + v_3 + v_4 + v_5 + v_6 + v_7
+deltaV = v_cs + v_2 + v_4 + v_5 + v_6 + v_7 #+ v_3
 print('Delta V required to get to the moon and back', deltaV, 'm/s')
 
-'''
+''' # below here needs to be updated for this code
 ########### Plots ###############
 v = np.linspace(0, 2*np.pi,1000) #true anomoly
 
@@ -83,11 +83,11 @@ xom = np.cos(v)*(Alt_moon + Rmoon) + Dearth_moon
 yom = np.sin(v)*(Alt_moon + Rmoon)
 
 ### Elliptical Orbit
-a1 = a
-b = p
-u = 0.6e7
-q = 0.0
-re = p/(1-e*np.cos(v))
+a1 = a #edit for this code
+b = p #edit for this code
+u = 0.6e7 #edit for this code
+q = 0.0 #edit for this code
+re = p/(1-e*np.cos(v)) #edit for this code
 
 # Ellipse parametric equations
 xe = re*np.cos(v)
