@@ -80,7 +80,7 @@ plt.legend()
 
 plt.figure()
 plt.grid()
-plt.title("Magentic Field for Hallway Throw")
+plt.title("Magnetic Field for Hallway Throw")
 plt.xlabel('Time (sec)')
 plt.ylabel('Magnetic Field (uTesla)')
 plt.plot(t2, bx2, 'b-', label='bx')
