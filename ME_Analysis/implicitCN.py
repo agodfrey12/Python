@@ -2,18 +2,19 @@
 
 import numpy as np
 import matplotlib.pyplot as plt
+
 L = 10 #length of rod
-ns =6 #rod is divided ino 5 equal segments
+ns = 6 #rod is divided ino 5 equal segments
 dx = L/(ns-1) #spatial interval
-k = 0.835 #heat transfer coeff
+alph = 77/(2764*1005) #heat transfer coeff
 tf = 2 #final time
 tp = 0.1 #time interval
 h = tp #time step
-nt = np.int16(tf/h+1) #total number of ime seps
-lambd = k*h/dx**2
+nt = np.int16(tf/h+1) #total number of time steps
+lambd = alph*h/dx**2
 tePr = np.zeros((nt,ns),float) #grid of points in time/space
-Te =np.zeros((ns,1),float) #The temp array at each time point
-coefm=np.zeros((ns,ns),float) #stiffness matrix
+Te = np.zeros((ns,1),float) #The temp array at each time point
+coefm = np.zeros((ns,ns),float) #stiffness matrix
 Te[0] = 100
 Te[ns-1] = 50
 nth = 0 #nth time point
