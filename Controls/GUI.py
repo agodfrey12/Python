@@ -70,7 +70,7 @@ class ControlsApplication(tk.Frame):
             
             
         for c in range(1):
-            self.fig = Figure(figsize=(8,8))
+            self.fig = Figure(figsize=(8,10))
             fig_plot= self.fig.add_subplot(111)
             canvas = FigureCanvasTkAgg(self.fig, master)
             
@@ -142,6 +142,53 @@ class ControlsApplication(tk.Frame):
             txOuts[3].delete('1.0','end')
             txOuts[3].insert('1.0',str(tf_cl))
             
+            ##########FROM HW5##################
+            # Calculate departures and arrivals 
+            n = len(poles)
+            p_angs=np.zeros(n) 
+            m = len(zeros)
+            z_angs=np.zeros(m) 
+             
+            # Departure angles at poles 
+            for i in range(0,n): 
+                ang = np.concatenate((np.angle(poles[i]-zeros), -np.angle(poles[i]-poles))) #concatenate 
+                ang = np.sum(ang)*180/np.pi -180 -360*(i) #sum 
+                ang = np.round(np.mod(ang,360),2) 
+                p_angs[i] = ang
+
+            # Arrival angles at zeros 
+            for i in range(0,m): 
+                ang = np.concatenate((np.angle(zeros[i]-poles), -np.angle(zeros[i]-zeros)))  #concatenate 
+                ang = np.sum(ang)*180/np.pi +180 +360*(i) #sum 
+                ang = np.round(np.mod(ang,360),2) 
+                z_angs[i] = ang 
+            print('pole deps: ', p_angs) 
+            print ('zero arrivs: ',z_angs) 
+             
+            # Calculate the n-m asymptotes  
+            # Location 
+            asym_loc = (np.sum(poles)-np.sum(zeros))/(n-m) #sum 
+            asym_loc = np.round(np.real( asym_loc),2) 
+            # Angles of n-m branches 
+            asym_angs = np.zeros(n-m) 
+            print('asymptote alpha: ', asym_loc) 
+            for i in range(0,n-m): 
+                asym_angs[i] = (180 + 360*i)/(n-m) 
+            print('asymptote angles: ', asym_angs) 
+             
+            # Calculate multiple roots 
+            num = np.squeeze(tf.num)
+            den = np.squeeze(tf.den)
+            num_df = np.polyder(num)
+            den_df = np.polyder(den) 
+            df = np.polyadd(np.convolve(num_df,den), -np.convolve(den_df,num)) #convolve 
+            mroots=np.round(np.roots(df),2) 
+            mroots=(mroots[~np.iscomplex(mroots)]) 
+            mroots = np.unique(mroots)
+            print('multiple roots:', mroots)
+            
+            
+            
         # Function to create the rootlocus
         def RootLocus():
             tf = GetTF()
@@ -168,7 +215,7 @@ class ControlsApplication(tk.Frame):
             K = float(txIns[4].get("1.0", "end-1c"))
             tf = control.minreal(K*tf/(1+K*tf))
             print(tf)
-            t = np.arange(0,10,.1)
+            t = np.arange(0,100,.1)
             y0 = control.step_response(tf,t)
             fig_plot.clear()
             fig_plot.plot(t,y0[1])
