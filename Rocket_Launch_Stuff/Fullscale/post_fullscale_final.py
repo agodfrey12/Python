@@ -44,7 +44,7 @@ for file in files:
     Ax_combo = (x + Ax)/2
     Ay_combo = (y + Ay)/2
     Az_combo = (z + Az)/2
-    #A = np.sqrt(Ax_ai**2 + Ay_ai**2 + Az_ai**2)
+    #A = np.sqrt(Ax_combo**2 + Ay_combo**2 + Az_combo**2)
     #A = np.sqrt(Ax**2 + Ay**2 + Az**2)
     #G = np.sqrt(gx**2 + gy**2 + gz**2)
     
@@ -235,8 +235,8 @@ for file in files:
     py_list.append(py[-1])
     #print(py_list)
     
-#print('X values for landing =', px_list)
-#print('Y values for landing =', py_list)
+print('X values for landing =', px_list)
+print('Y values for landing =', py_list)
 
 finalx = np.sum(px_list)/len(px_list)
 finaly = np.sum(py_list)/len(py_list)
